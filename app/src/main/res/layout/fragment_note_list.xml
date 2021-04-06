@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="noteListViewModel"
+            type="hcmus.android.sample.notes.adapters.NoteListViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Note list + Placeholder (if list is empty) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list"
+                android:name="hcmus.android.sample.notes.NoteListFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/padding_small"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:spanCount="2"
+                tools:context=".NoteListFragment"
+                tools:listitem="@layout/fragment_note_entity" />
+
+            <LinearLayout
+                android:id="@+id/placeholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.5"
+                android:divider="@drawable/padding_small"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:showDividers="middle"
+                android:visibility="@{noteListViewModel.isListEmpty() ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:layout_width="@dimen/placeholder_icon_size"
+                    android:layout_height="@dimen/placeholder_icon_size"
+                    android:src="@drawable/ic_placeholder" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/note_list_placeholder" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Search box + New note button -->
+        <LinearLayout
+            android:id="@+id/main_app_bar"
+            style="@style/Widget.MaterialComponents.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height"
+            android:background="@color/primary"
+            android:elevation="8dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/main_search_box"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="@dimen/padding"
+                android:hint="@string/note_search_bar"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingStart="@dimen/padding"
+                android:paddingEnd="@dimen/padding"
+                android:textColor="@color/black"
+                android:textColorHint="@color/search_box_hint_text">
+
+            </EditText>
+
+            <ImageButton
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="@dimen/app_bar_height"
+                android:layout_height="match_parent"
+                android:background="@drawable/ripple"
+                android:contentDescription="@string/btn_new"
+                android:onClick="btnCreateNoteHandler"
+                android:src="@drawable/ic_new" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

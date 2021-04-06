@@ -1,0 +1,34 @@
+<resources>
+    <!-- App title -->
+    <string name="app_name">Notes</string>
+
+    <!-- Sample note #1 (Welcome) -->
+    <string name="sample_note_01_title">Welcome to Notes!</string>
+    <string name="sample_note_01_tag">intro</string>
+    <string name="sample_note_01_content">This is just a simple note app; no fancy formatting or colored notes unfortunately. To get started, delete these intro notes and create a new one.</string>
+
+    <!-- Sample note #2 (How to delete notes) -->
+    <string name="sample_note_02_title">How do I delete notes?</string>
+    <string name="sample_note_02_tag">intro</string>
+    <string name="sample_note_02_content">Just long-click (hold) a note and choose to delete.</string>
+
+    <!-- Sample note #3 (No empty notes) -->
+    <string name="sample_note_03_title">Please *note* that…</string>
+    <string name="sample_note_03_tag">intro</string>
+    <string name="sample_note_03_content">Empty notes will automagically be deleted.</string>
+
+    <!-- Note list -->
+    <string name="note_list_placeholder">There\'s nothing here.</string>
+    <string name="note_search_bar">Search for a note…</string>
+
+    <!-- Note view -->
+    <string name="note_title_none">Untitled note</string>
+    <string name="note_tag_none">Enter a tag here…</string>
+    <string name="note_content_none">Just write…</string>
+    <string name="note_date_modified_none">Date modified</string>
+
+    <!-- Buttons -->
+    <string name="btn_new">New note</string>
+    <string name="btn_back">Save this note and return to home</string>
+    <string name="btn_format_tab">Insert a tab character</string>
+</resources>

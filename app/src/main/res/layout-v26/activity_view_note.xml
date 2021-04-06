@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import
+            alias="TimestampFormatter"
+            type="hcmus.android.sample.notes.helpers.TimestampFormatterKt" />
+
+        <variable
+            name="thisNote"
+            type="hcmus.android.sample.notes.storage.NoteEntity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="@dimen/padding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/padding"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <EditText
+                    android:id="@+id/view_note_title"
+                    style="@style/TextAppearance.MaterialComponents.Headline4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/note_title_none"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="@{thisNote.title}" />
+
+                <TextView
+                    android:id="@+id/view_note_date_modified"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawablePadding="@dimen/padding_small"
+                    android:hint="@string/note_date_modified_none"
+                    android:text="@{TimestampFormatter.formatTimestamp(thisNote.dateModified)}"
+                    app:drawableStartCompat="@drawable/ic_note_date_modified" />
+
+                <EditText
+                    android:id="@+id/view_note_tag"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawablePadding="@dimen/padding_small"
+                    android:hint="@string/note_tag_none"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text="@{thisNote.tag}"
+                    app:drawableStartCompat="@drawable/ic_note_tag" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider" />
+
+                <EditText
+                    android:id="@+id/view_note_content"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="@string/note_content_none"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine"
+                    android:text="@{thisNote.content}" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/view_tool_bar"
+            style="@style/Widget.MaterialComponents.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height"
+            android:background="@color/primary"
+            android:elevation="8dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/ripple"
+                android:contentDescription="@string/btn_back"
+                android:onClick="btnCloseNoteHandler"
+                android:src="@drawable/ic_close"
+                android:tooltipText="@string/btn_back" />
+
+            <ImageButton
+                android:id="@+id/btn_format_tab"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/ripple"
+                android:contentDescription="@string/btn_format_tab"
+                android:onClick="btnInsertTabHandler"
+                android:src="@drawable/ic_format_tab"
+                android:tooltipText="@string/btn_format_tab" />
+
+            <!--
+
+            <ImageButton
+                android:id="@+id/btn_format_bold"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:background="@drawable/ripple"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_format_bold"
+                android:onClick="btnFormatHandler"
+                android:tooltipText="Bold" />
+
+            <ImageButton
+                android:id="@+id/btn_format_italic"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:background="@drawable/ripple"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_format_italic"
+                android:onClick="btnFormatHandler"
+                android:tooltipText="Italic" />
+
+            <ImageButton
+                android:id="@+id/btn_format_underline"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:background="@drawable/ripple"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_format_underline"
+                android:onClick="btnFormatHandler"
+                android:tooltipText="Underline" />
+
+            <ImageButton
+                android:id="@+id/btn_format_strike"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:background="@drawable/ripple"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_format_strike"
+                android:onClick="btnFormatHandler"
+                android:tooltipText="Strikethrough" />
+
+             -->
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

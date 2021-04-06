@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_bar_height">56dp</dimen>
+    <dimen name="padding">16dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_note_card">4dp</dimen>
+    <dimen name="placeholder_icon_size">48dp</dimen>
+</resources>

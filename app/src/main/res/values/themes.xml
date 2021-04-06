@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Notes" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#f4b400</item>
+        <item name="colorPrimaryVariant">#bc8500</item>
+        <item name="colorOnPrimary">@android:color/black</item>
+
+        <!-- Status bar / Navbar color. -->
+        <item name="android:statusBarColor">?android:attr/windowBackground</item>
+        <item name="android:navigationBarColor">?colorPrimary</item>
+
+        <!-- Contrast status bar / navbar icons -->
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+        <item name="android:windowLightStatusBar"     tools:targetApi="23">true</item>
+    </style>
+</resources>

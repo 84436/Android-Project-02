@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="noteId"
+            type="Long" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_note_card"
+        android:orientation="horizontal"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/note_card_stroke"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_note_card">
+
+            <TextView
+                android:id="@+id/note_title"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_note_card"
+                android:textAppearance="?attr/textAppearanceListItem"
+                tool:text="Title" />
+
+            <TextView
+                android:id="@+id/note_date_modified"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_note_card"
+                android:textAppearance="?attr/textAppearanceListItem"
+                app:drawableStartCompat="@drawable/ic_note_date_modified_small"
+                tool:text="Date modified" />
+
+            <TextView
+                android:id="@+id/note_tag"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_note_card"
+                android:textAppearance="?attr/textAppearanceListItem"
+                app:drawableStartCompat="@drawable/ic_note_tag_small"
+                tool:text="Tag" />
+
+            <TextView
+                android:id="@+id/note_content"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_note_card"
+                android:maxLines="5"
+                tool:text="Content" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>
